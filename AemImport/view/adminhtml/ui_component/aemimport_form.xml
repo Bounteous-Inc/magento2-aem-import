@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aemimport_form.aemimport_form_data_source</item>
+            <item name="deps" xsi:type="string">aemimport_form.aemimport_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Infield\AemImport\Block\Adminhtml\Button\ImportButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="aemimport_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Infield\AemImport\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">aemimport_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="aemimport/import/save"/>
+        </settings>
+    </dataSource>
+
+    <fieldset name="aemimport_fieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Import Settings</item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">aemimport</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="aem_instance_url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">AEM Instance URL</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">aemimport</item>
+                    <item name="value" xsi:type="string">http://192.168.10.1:4502</item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>aem_instance_url</dataScope>
+            </settings>
+        </field>
+
+        <field name="aem_username">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="id" xsi:type="string">foo1</item>
+                    <item name="label" xsi:type="string">AEM Username</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">aemimport</item>
+                    <item name="value" xsi:type="string">admin</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="aem_password">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="id" xsi:type="string">foo2</item>
+                    <item name="elementTmpl" xsi:type="string">Infield_AemImport/form/element/password</item>
+                    <item name="label" xsi:type="string">AEM Password</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">aemimport</item>
+                    <item name="value" xsi:type="string">admin</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="aem_products_path">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Products Path</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">aemimport</item>
+                    <item name="value" xsi:type="string">/var/commerce/products/we-retail</item>
+                </item>
+            </argument>
+        </field>
+
+    </fieldset>
+</form>

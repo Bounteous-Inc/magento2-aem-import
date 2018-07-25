@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Infield_AemImport::index" title="AEM Import" sortOrder="50" module="Infield_AemImport" parent="Magento_Backend::system_convert" action="aemimport/import" resource="Infield_AemImport::index"/>
+    </menu>
+</config>
